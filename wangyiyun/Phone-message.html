@@ -1,0 +1,73 @@
+<style>
+	
+</style>
+
+<body>
+	<div class="message">
+		<i class="fa fa-clock-o">&nbsp</i>
+		<a class="login-f" page='Phone-password' style="color: #666;font-size: 12px;text-decoration: none;">使用密码登录</a>
+		<div class="item-input">
+			<i class="fa fa-user-o fa-x"></i>
+			<input type="text" placeholder="请输入手机号" />
+		</div>
+		<div class="item-input" style="width: 232px;display: inline-block;margin-top: 5px;">
+			<input type="text" placeholder="输入验证码" style="width: 138px;"/>
+		</div>
+		<div class="item-input" style="width: 118px;display: inline-block;margin-top: 0px;border: 1px solid #31A030;color: #31A030;text-align: center;font-size: 13px;cursor: pointer;">
+			获取验证码
+		</div>
+		<div id='phone-login' href="">登 录</div>
+		<div class="register">
+			<input class='ten-day-i' type="checkbox" />
+			<label class="ten-day-l">十天免登陆</label>
+			<label class="ten-day-l">|&nbsp &nbsp 忘记密码？</label>
+			<a href="register.html" style='float: right;color: #49AF4F;font-size: 12px;line-height: 20px;margin: 10px 0px;text-decoration: none;'>
+				去注册> </a>
+		</div>
+		
+	</div>
+</body>
+<script>
+	var G = {};
+	G.closePage = function()
+	{
+		 window.location.href = 'index.html' ;
+	}
+	// 查找 phont-content
+	G.getItem = function(page)
+	{
+		var items = $('.message');
+		for(var item of items)
+		{
+			if( $(item).attr('page') == page) 
+			   return item;
+		}
+		return null;
+	}
+	// 选中 item
+	G.openPage = function(page)
+	{	
+		// 加载子页面 （封装到了afquery.js里）
+		Af.loadPage('.message', page); 
+		// 记到地址栏的hash里
+		window.location.hash = page;
+		
+	}
+	// 取出所有<button>添加事件处理
+	$('.login-f').click(function(){
+		var page = $(this).attr('page');
+		G.openPage (page);
+	});
+	
+	// 检查地址栏
+	if(location.hash != null && location.hash.length>0)
+	{
+		// location.hash: 示例 #home.html
+		var page = location.hash.substr(1); // 去掉#号
+		G.openPage (page);
+	}
+	else
+	{   // 默认加载folder.html
+		G.openPage("Phone-password.html");
+	}
+</script>

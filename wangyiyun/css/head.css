@@ -1,0 +1,152 @@
+	.head {
+		width: 100%;
+		height: 30px;
+		border: 1px solid #ccc;
+		background-color: #F6F6F6;
+	}
+	
+	.head .head-center {
+		width: 1205px;
+		margin: 0 auto;
+	}
+	
+	.head-left {
+		display: inline-block;
+		line-height: 32px;
+		font-size: 13px;
+		color: #666666;
+	}
+	
+	.head-center .head-right {
+		display: inline-block;
+		line-height: 32px;
+		font-size: 13px;
+		float: right;
+	}
+	
+	.importent {
+		width: 100%;
+		height: 1992px;
+	}
+	
+	.importent .importent-top {
+		width: 1205px;
+		height: 110px;
+		margin: 35px auto;
+	}
+	
+	.importent .importent-image {
+		width: 1205px;
+		height: 170px;
+		margin: 0 auto;
+	}
+	
+	.importent-image .image {
+		width: 286px;
+		height: 170px;
+		display: inline-block;
+		line-height: 40px;
+		text-align: center;
+		margin-right: 11.7px;
+		transition: all 0.5s;
+	}
+	.image:hover{
+		transform: scale(1.1);
+	}
+	/*-------------------------------------------*/
+	
+	.importent-center-person {
+		width: 100%;
+		height: 400px;
+		padding-top: 40px;
+		margin-top: 40px;
+		background-color: #F4F4F4;
+	}
+	
+	.importent-center-person .person-title {
+		width: 1205px;
+		height: 36px;
+		margin: 0px auto 10px auto;
+	}
+	
+	.person-img {
+		display: inline-block;
+		margin-top: 20px;
+		margin-right: 12px;
+		position: relative;
+	}
+	
+	.person-img #person-png {
+		width: 225px;
+		height: 185px;
+		margin: 0px;
+	}
+	
+	.person-img #person-information {
+		width: 225px;
+		height: 94px;
+		padding-top: 25px;
+		background-color: #fff;
+		text-align: center;
+		position: absolute;
+		top: 185px;
+	}
+	/*-------------------------------------------*/
+	
+	.importent-center-class {
+		width: 100%;
+		height: 245px;
+		margin-top: 20px;
+		padding-top: 35px;
+	}
+	
+	.importent-center-class .class-title {
+		width: 1205px;
+		height: 36px;
+		margin: 0px auto 10px auto;
+	}
+	
+	.class-img {
+		display: inline-block;
+		margin-top: 20px;
+		margin-right: 12px;
+		position: relative;
+	}
+	
+	.class-img #class-png {
+		width: 225px;
+		height: 125px;
+		margin: 0px;
+	}
+	
+	.class-img #class-information {
+		width: 225px;
+		height: 94px;
+		padding-top: 25px;
+		margin: 0px;
+		background-color: #fff;
+		text-align: center;
+		position: absolute;
+		top: 125px;
+	}
+	/*-------------------------------------------*/
+	
+	.importent .importent-buttom {
+		width: 1205px;
+		height: 153px;
+		padding: 30px 0px;
+		margin: 0 auto;
+		margin-top: 30px;
+	}
+	
+	.importent-buttom #buttom-advtisement1 {
+		width: 960px;
+		height: 130px;
+		float: left;
+	}
+	
+	.importent-buttom #buttom-advtisement2 {
+		width: 225px;
+		height: 130px;
+		float: right;
+	}

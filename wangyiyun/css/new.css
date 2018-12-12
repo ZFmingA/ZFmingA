@@ -1,0 +1,97 @@
+.divMask
+{
+	position: absolute;
+	z-index: 1002;
+	left: 0;
+	top: -300px;
+	left: 70px;
+	width: 360px;
+	height: 200px;
+	background:rgba(0,0,0,.8);
+	color: #FFFFFF;
+}
+#btnSide{
+	z-index: 1003;
+	background: linear-gradient(to right,#000000 50%,#31A030 50%);
+	background-size:200% 100%;
+	background-position:right top ;
+	color: #FFFFFF;
+	padding: 10px;
+	position:fixed ;
+	left: 0px;
+	top: 40%;
+	transition: all 0.5s;
+	cursor: pointer;
+}
+#btnSide:hover{
+	background-position:left top ;
+}
+#divSide{
+	z-index: 1003;	
+	position: fixed;
+	left: -600px;
+	top: 0;
+	background: #000000;
+	color: #FFFFFF;
+	width: 200px;
+	height: 0px;
+}	
+#clsSide
+{
+	position: fixed;
+	top: 0px;
+	width: 200px;
+	height: 200px;
+	background: #31A030;
+}
+#book_information
+{
+	position: fixed;
+	top: 200px;
+	width: 200px;
+	box-shadow:  #ccc 2px 2px 30px 1px ;
+	border: 1px solid #CCCCCC;
+	background-color: #FFFFFF;
+	color: #000000;
+}
+#look_information
+{
+	width: 300px;
+	min-height: 500px;
+	background: #FFFFFF;
+	color: #524e4e;
+	font: "微软雅黑";
+	font-size: 15px;
+	border: 1px solid #CCCCCC;
+	box-shadow: #CCCCCC 2px 2px 10px 1px;
+}
+.look-information
+{
+	margin: 10px;
+}
+.look-information label
+{
+	font-size: 12px;
+	color: #827b7b;
+}
+#close_information
+{
+	float: right;
+	display: inline-block;
+	background-color: #31A030;
+	padding:4px 8px 4px 8px;
+	font-size: 12px;
+}
+.look-information a
+{
+	cursor: pointer;
+	color: #000;
+	font-size: 13px;
+	margin: 0px;
+	padding: 0px;
+}
+.look-information a:hover
+{
+	
+	color: #3E8F3E;
+}

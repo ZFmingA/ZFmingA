@@ -1,0 +1,127 @@
+html {
+	background-color: #ccc;
+}
+
+ul {
+	margin: 0px;
+	padding: 0px;
+}
+
+.login {
+	width: 440px;
+	height: 457px;
+	margin: 100px auto;
+	background-color: #fff;
+}
+
+.login-close {
+	width: 440px;
+	height: 40px;
+}
+
+.login-set {
+	width: 360px;
+	height: 270px;
+	padding: 0px 40px;
+}
+
+.login-item {
+	width: 177px;
+	height: 50px;
+	margin: 0px;
+	padding: 0px;
+	cursor: pointer;
+	font-family: "微软雅黑";
+	font-size: 20px;
+	text-align: center;
+	color: #ccc;
+	line-height: 50px;
+	display: inline-block;
+	background-color: #fff;
+	border: none;
+}
+
+.item-active {
+	color: #000;
+	border-bottom: 2px solid #49af4f;
+}
+
+label {
+	color: #666666;
+	font-size: 12px;
+}
+
+input {
+	width: 300px;
+	height: 30px;
+	font-size: 13px;
+	padding-left: 15px;
+	font-family: "微软雅黑";
+	line-height: 30px;
+	border: 0px;
+	outline: none;
+	cursor: pointer;
+}
+
+.message {
+	width: 360px;
+	height: 30px;
+	padding: 10px 0px;
+	text-align: right;
+}
+
+.item-input {
+	width: 358px;
+	height: 40px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	line-height: 40px;
+	margin-top: 12px;
+	margin-bottom: 20px;
+}
+
+#phone-login {
+	width: 360px;
+	height: 42px;
+	background-color: #49af4f;
+	border-radius: 2px;
+	border: 1px solid #ccc;
+	line-height: 42px;
+	text-align: center;
+	color: #fff;
+	font-size: 18px;
+	font-family: "微软雅黑";
+}
+
+.ten-day-i {
+	width: 20px;
+	height: 20px;
+	margin: 10px 0px;
+	float: left;
+}
+
+.ten-day-l {
+	width: 80px;
+	height: 20px;
+	line-height: 20px;
+	margin: 10px 0px;
+	padding-left: 10px;
+	float: left;
+}
+.other-login
+{
+	margin: 0px auto;
+	width: 360px;
+	height: 50px;
+}
+.register {
+	
+	width: 360px;
+	height: 50px;
+}
+
+.other {
+	padding: 10px 10px;
+	display: inline-block;
+	text-align: center;
+}

@@ -1,0 +1,38 @@
+body {
+	margin: 0px;
+	padding: 0px;
+}
+
+a {
+	text-decoration: none;
+	font-size: 10px;
+	color: #fff;
+	margin-left: 10px;
+}
+
+a:link{
+	color: #666666;
+}
+a:visited{
+	color: #666666;
+}
+a:hover {
+	color: #31A030;
+}
+a:active{
+	color:#666666;
+}
+.class-img{
+	transition: all 0.5s;
+}
+.class-img:hover{
+	transform: scale(1.1);
+}
+.carousel-inner img
+{
+	transition: all 0.5s;
+}
+.carousel-inner img:hover
+{
+	transform: scale(1.1);
+}

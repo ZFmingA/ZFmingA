@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>登录</title>
+		<script type="text/javascript" src="js/jquery.min.js" ></script>
+		<script type="text/javascript" src="js/afquery.js" ></script>
+		<link rel="stylesheet" href="css/font-awesome.min.css" />
+		<link rel="stylesheet" href="css/login.css" />
+		
+	</head>
+	<style>
+		
+	</style>
+	<body>
+		<div class='login'>
+			
+			<div class='login-close'>
+				<!--动态显示时间-->
+				<div style="padding:10px 0px 0px 40px;color: #666666;font-size: 15px;display: inline-block;float: left;">
+					<label>当前时间：</label>
+					<span id="mytime"></span>
+				</div>
+				<div class="close-item" style="float: right;padding-right:15px;cursor: pointer;">
+					
+					<i class="fa fa-close fa-x" style="line-height: 40px;" onclick="G.closePage()"></i>
+				</div>
+			</div>
+			<div style="margin: 0px auto;width: 360px;">
+				<ul>
+					<li class="login-item item-active" page='Phone-password.html'>
+						手机号登录
+					</li>
+					<li class="login-item" page='Email.html'>
+						邮箱号登录
+					</li>
+				</ul>
+			</div>
+			<div class='login-set'>
+				
+			</div>
+			
+			
+			<div class="other-login">
+				<label class='ten-day-l' style="padding: 0px;">其他登录方式</label>
+				<div class="other">
+					<span style="padding: 0px 0px 5px 5px ;"> <i class="fa fa-weixin">&nbsp</i> </span>
+					<br />
+					<label >微信</label>
+				</div>
+				<div class="other">
+					<span style="padding: 0px 0px 5px 5px ;"> <i class="fa fa-qq">&nbsp</i> </span>
+					<br />
+					<label >QQ</label>
+				</div>
+				<div class="other">
+					<span style="padding: 0px 0px 5px 5px ;"> <i class="fa fa-weibo">&nbsp</i> </span>
+					<br />
+					<label >微博</label>
+				</div>
+				<div class="other">
+					<span style="padding: 0px 0px 5px 5px ;"> <i class="fa fa-renren">&nbsp</i> </span>
+					<br />
+					<label >人人</label>
+				</div>
+				<div class="other">
+					<span style="padding: 0px 0px 5px 5px ;"> <i class="fa fa-pinterest-square">&nbsp</i> </span>
+					<br />
+					<label >邮件</label>
+				</div>
+		    </div>
+		</div>
+	</body>
+	<script>
+		var G = {};
+		G.closePage = function()
+		{
+			 window.location.href = 'index.html' ;
+		}
+		// 查找 login-item
+		G.getItem = function(page)
+		{
+			var items = $('.login-item');
+			for(var item of items)
+			{
+				if( $(item).attr('page') == page) 
+				   return item;
+			}
+			return null;
+		}
+		// 选中 item
+		G.openPage = function(page)
+		{	
+			// 加载子页面 （封装到了afquery.js里）
+			Af.loadPage('.login-set', page); 
+			// 记到地址栏的hash里
+			window.location.hash = page;
+			// 切换选中效果
+			var item = G.getItem( page );
+			if (item != null)
+			{
+				
+				$('.item-active').removeClass('item-active'); // 原先选中的项, 设为不选中
+				$(item).addClass('item-active'); // 点中的项，设为选中			
+			}	
+		}
+		// 添加事件处理
+		$('.login-item').click(function(){
+			var page = $(this).attr('page');
+			G.openPage (page);
+		});
+		
+		// 检查地址栏
+		if(location.hash != null && location.hash.length>0)
+		{
+			// location.hash: 示例 #home.html
+			var page = location.hash.substr(1); // 去掉#号
+			G.openPage (page);
+		}
+		else
+		{   // 默认加载folder.html
+			G.openPage("Phone-password.html");
+		}
+		
+		
+		G.showTime = function()
+		{
+		    nowtime=new Date();
+		    year=nowtime.getFullYear();
+		    month=nowtime.getMonth()+1;
+		    date=nowtime.getDate();
+		    document.getElementById("mytime").innerText=year+"年"+month+"月"+date+" "+nowtime.toLocaleTimeString();
+		}
+		
+		setInterval("G.showTime()",1000);
+
+		
+	</script>
+</html>
