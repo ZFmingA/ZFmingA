@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<!-- 示例
+	<service name="Hello" class="my.HelloApi" /> 
+	<upload name="BasicFile" class="my.my.BasicFileUpload" /> 
+	-->
+	
+	<!-- 课程 -->
+	<service name="CourseAdd" class="OnlineQuestion.admin.course.CourseAddApi" /> 
+	<service name="CourseGet" class="OnlineQuestion.admin.course.CourseGetApi" /> 
+	<service name="CourseList" class="OnlineQuestion.admin.course.CourseListApi" />
+	<service name="CourseRemove" class="OnlineQuestion.admin.course.CourseRemoveApi" /> 
+	<service name="CourseUpdate" class="OnlineQuestion.admin.course.CourseUpdateApi" /> 
+	
+	<!-- 章节 -->
+	<service name="ChapterSave" class="OnlineQuestion.admin.chapter.ChapterSaveApi" /> 
+	
+	<!-- 习题 -->
+	<service name="ExampleSave" class="OnlineQuestion.admin.example.ExampleSaveApi"/>
+	<service name="ExampleList" class="OnlineQuestion.admin.example.ExampleListApi"/>
+	<service name="ExampleLoad" class="OnlineQuestion.admin.example.ExampleLoadApi"/>
+	<service name="ExampleRemove" class="OnlineQuestion.admin.example.ExampleRemoveApi"/>
+	
+	<!-- 登录与退出 -->
+	<service name="Login" class="OnlineQuestion.admin.login.LoginApi"/>
+	<service name="LoginOut" class="OnlineQuestion.admin.login.LoginOutApi"/>
+	
+	<!-- 修改密码 -->
+	<service name="ProfileUpdate" class="OnlineQuestion.admin.profile.ProfileUpdateApi"/>
+</config>

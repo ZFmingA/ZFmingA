@@ -1,0 +1,28 @@
+
+	<!-- *** index_top.html *** -->
+	<script type="text/javascript" src="index.js" ></script>
+	<div id='top'>
+		<div class='logo'> 在线题库管理界面 </div>		
+		<div class='account'>
+			<label id="username">
+				
+			</label>
+			<button onclick="MP.signOut()">安全退出</button>
+		</div>
+	</div>
+	<script>
+		var MP = {};
+		MP.signOut = function()
+		{
+			var req = {};
+			Af.rest("LoginOut.api",req,function(){
+				alert("安全退出成功");
+				location.href="login.html";
+			});
+		}
+		
+		$('.account #username').html('当前用户：'+username);
+		
+		//@ sourceURL=index_top.js
+	</script>
+	

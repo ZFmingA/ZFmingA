@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title> 章节管理 </title>
+		<script type="text/javascript" src="jquery/jquery.min.js" ></script>
+		<script type="text/javascript" src="jquery/afquery.js" ></script>
+		<link rel="stylesheet" href="jquery/afquery.css" />
+		<link rel="stylesheet" href="css/common.css" />
+		<link rel="stylesheet" href="css/index.css" />
+		
+		<style>
+			/* 工具栏 */
+			#content .toolbar{
+				padding: 8px ;
+			}			
+			#content .toolbar button:hover{
+				
+			}
+			
+			/* 课程信息 */
+			#content .info{
+				padding: 10px;
+				font-size: 20px;
+			}
+			/* 表格 */
+			.chapter_list{
+				
+			}
+			.chapter_list th { padding: 8px; background-color: #f1f1f1; color:#444;}
+			.chapter_list td { padding: 6px;}
+			.chapter_list tbody tr:hover{ background-color: #fde9c4;color:#444}
+			.chapter_list .c1 { width: 70px ;}
+			.chapter_list .c2 { width: 350px ;}
+			.chapter_list .c3 { width: 200px ;}
+		</style>
+		
+		<script>
+			// 初始化数据
+			var course = ${courseJ};
+			var chapters = ${chaptersJ};
+		</script>
+	</head>
+	<body >
+
+		<#include '/index_top.html' />
+		<#include '/index_left.html' />
+		
+		<!-- 中间 -->
+		<div id='content'>
+			<!-- 课程信息 -->
+			<div class='info'>
+				当前课程名称 : ${ course.title }
+			</div>
+			<div style="padding-left: 10px;color: red;">
+				注意：无论是添加还是删除都要点保存才能生效！
+			</div>
+			
+			<!-- 工具按钮 -->
+			<div class='toolbar'>
+				<button onclick='M.add()'> 添加 </button>
+				<button onclick='M.save()'> 保存 </button>
+			</div>	
+			
+			<!-- 内容显示 -->
+			<div style='padding-left: 10px'>
+				
+				<div>
+					<table class='chapter_list'>
+					<thead>
+						<tr>
+							<th class='c1'> 章节序号 </th>
+							<th class='c2'> 章名称 </th>
+							<th class='c3'> 操作    </th>
+						</tr>						
+					</thead>
+					<tbody>		
+					  
+					</tbody>
+					<tfoot style="display: none;">
+						<tr>
+							<td>{#number}</td>
+							<td>{#title}</td>
+							<td iid='#number'>
+								<a href="javascript:void(0)" onclick="M.remove(this)">删除</a>
+							</td>
+						</tr>
+					</tfoot>
+				</div>
+					
+				</table>
+			</div>
+		</div>
+		
+		<#include 'confirm_dialog.html'/> 
+		<#include 'line_input_dialog.html'/>
+	</body>
+	
+	<script>
+		MENU.select('课程管理');
+
+		
+		var M = {};
+		M.chapter_list = [];//存储String
+		M.change = false;
+		
+		//添加章节
+		M.add = function()
+		{
+			var dlg = new AfDialog('#line_input_dialog');
+			dlg.set({prompt:'请输入章节名称', value:''});
+			dlg.show();
+			
+			//添加事件处理
+			dlg.handleEvent('[role=ok]','click',function(){
+				dlg.hide();
+				var result = dlg.get();
+				M.chapter_list.push(result.value);
+				M.refresh();
+				M.change = true;
+			});
+		}
+		//删除章节
+		M.remove = function(e)
+		{
+			var iid = $(e).parent().attr('iid');
+			M.chapter_list.splice(iid-1,1);//前面的参数表示删除元素位置，后面表示删除个数
+			M.refresh();
+			M.change = true;
+		}
+		//保存
+		M.save = function()
+		{
+			var req = {};
+			req.course = course.id;
+			req.chapter_list = M.chapter_list;
+			Af.rest("ChapterSave.api",req,function(){
+				M.change=false;
+				location.reload();//刷新
+				alert('保存成功！');
+			});
+		}
+		//离开提醒框
+//		M.waring = function()
+//		{
+//			if(M.change)
+//			{
+//				var dlg = new AfDialog('#confirm_dialog');
+//				dlg.set({ask:'是否保存刚才进行的操作,5秒后将取消操作，自动跳转目标页面'});
+//				dlg.show();
+//	
+//				//添加事件处理
+//				dlg.handleEvent('[role=ok]','click',function(){
+//					dlg.hide();
+//					M.save();
+//				});
+//				
+//			}
+//		}
+//		window.onbeforeunload = M.waring;
+//      M.sleep = function(ms)
+//      {
+//		    for(var t = Date.now();Date.now() - t <= ms;);
+//		}
+//		 
+        //刷新和离开此页面提示
+		window.onbeforeunload = function(event)
+		{
+		    if(M.change)
+		   		return confirm("确定退出吗");
+		}
+
+		// 把 M.chapter_list 数组格式化为HTML表格
+		M.refresh = function()
+		{
+			var target = $('.chapter_list tbody').html('');//取得tbody并清空
+			
+			var tp = new AfTemplate($('.chapter_list tfoot').html());
+			for(var i=0;i<M.chapter_list.length;i++)
+			{
+				var row = {};
+				row.number = i+1;
+				row.title = M.chapter_list[i];
+				var str = tp.replace(row);
+				target.append(str);//往tbody里添加一行
+			}
+		}
+		
+		for(var chapter of chapters)
+		{
+			M.chapter_list.push(chapter.title);
+		}
+		M.refresh();
+	</script>
+</html>
